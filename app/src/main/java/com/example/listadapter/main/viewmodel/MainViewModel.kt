@@ -15,7 +15,14 @@ class MainViewModel: ViewModel() {
         "徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県",
         "熊本県","大分県","宮崎県","鹿児島県","沖縄県")
 
-    val prefectureList = dataList.map { Prefecture(it) }
+    val prefectureList =
+        dataList.map {
+            if (it == "東京都") {
+                Prefecture(it, MutableLiveData(true))
+            } else {
+                Prefecture(it)
+            }
+        }
 
     private val _prefectures = MutableLiveData<List<Prefecture>>(prefectureList)
     val prefectures: LiveData<List<Prefecture>> = _prefectures.distinctUntilChanged()

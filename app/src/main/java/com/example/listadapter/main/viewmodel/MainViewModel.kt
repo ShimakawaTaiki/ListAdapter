@@ -1,8 +1,5 @@
 package com.example.listadapter.main.viewmodel
 
-import android.view.View
-import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.*
 import com.example.listadapter.main.data.Prefecture
 
@@ -23,7 +20,7 @@ class MainViewModel: ViewModel() {
     private val _click = MutableLiveData("Clicked!!")
     val click = _click as LiveData<String>
 
-    fun onClickItem(view: View, prefecture: Prefecture) {
+    fun onClickItem(prefecture: Prefecture) {
         prefectureList.forEach {
             it.isChecked.value = false
         }
